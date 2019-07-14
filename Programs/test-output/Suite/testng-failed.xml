@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test thread-count="5" name="Test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="classes">
+  <test thread-count="5" name="Test(failed)" parallel="classes">
     <classes>
       <class name="testCases.FormTest">
         <methods>
           <include name="afterSuite"/>
+          <include name="closeClass1"/>
           <include name="startSuite"/>
           <include name="beforeTestMethod"/>
           <include name="closeBrowser"/>
           <include name="afterTestMethod"/>
-          <include name="formSingleEntry" invocation-numbers="0"/>
+          <include name="startClass1"/>
+          <include name="formSingleEntry"/>
           <include name="launchBrowser"/>
         </methods>
       </class> <!-- testCases.FormTest -->
+      <class name="testCases.FormTest2">
+        <methods>
+          <include name="formMultipleEntry"/>
+          <include name="afterSuite"/>
+          <include name="startSuite"/>
+          <include name="beforeTestMethod"/>
+          <include name="startMEClass"/>
+          <include name="closeClass1"/>
+          <include name="closeBrowser"/>
+          <include name="afterTestMethod"/>
+          <include name="launchBrowser"/>
+        </methods>
+      </class> <!-- testCases.FormTest2 -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
