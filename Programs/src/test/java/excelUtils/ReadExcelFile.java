@@ -10,6 +10,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 
 public class ReadExcelFile {
+//	public String xlFileName=null;
+//	public String sheetName=null;
 	
 	public String[][] getFormData(String xlFileName, String sheetName) throws IOException
 	{
@@ -52,14 +54,17 @@ public class ReadExcelFile {
 			
 	}
 	
-@DataProvider(name="testData")
-	
-	public Object[][] textData() throws IOException
-	{
-		Object[][] arrayData = null; 
-		ReadExcelFile xlRead = new ReadExcelFile();
-		arrayData = xlRead.getFormData("C:\\Users\\Srikanth\\git\\Programs\\CoreJavaLearn\\Programs\\src\\test\\java\\excelFiles\\TestData.xlsx","TextDisplay");
-		return arrayData;	
-	}
+//@DataProvider(name="testData")
+//	
+//	public Object[][] textData() throws IOException
+//	{
+//		Object[][] arrayData = null; 
+//		ReadExcelFile xlRead = new ReadExcelFile();
+//		arrayData = xlRead.getFormData("C:\\Users\\Srikanth\\git\\Programs\\CoreJavaLearn\\Programs\\src\\test\\java\\excelFiles\\TestData.xlsx","TextDisplay");
+//		
+//		//arrayData = xlRead.getFormData(xlFileName,sheetName);
+//		
+//		return arrayData;	
+//	}
 	
 }

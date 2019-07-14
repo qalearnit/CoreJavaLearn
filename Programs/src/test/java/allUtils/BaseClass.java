@@ -1,7 +1,6 @@
 package allUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -9,14 +8,14 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -30,6 +29,8 @@ public class BaseClass
 public ExtentReports report;
 public ExtentTest eLog;
 public WebDriver driver;
+
+public ReadExcelFile xlRead = new ReadExcelFile();
 
 public String reportPath="C:\\Users\\Srikanth\\git\\Programs\\CoreJavaLearn\\Programs\\src\\test\\java\\extentReports\\"; 
 
@@ -47,6 +48,8 @@ public void startSuite()
 public void afterSuite()
 {
 	System.out.println("After suite");
+	//report.endTest(eLog);	
+	
 	report.flush();
 	report.close();
 }
@@ -62,8 +65,9 @@ public void launchBrowser()
 
   @AfterTest
   public void closeBrowser() {
+	  System.out.println("this is close test");
 	  
-	  driver.close();
+	 // driver.close();
   }
   
 @BeforeMethod
@@ -75,6 +79,7 @@ public void launchBrowser()
 @AfterMethod
 	public void afterTestMethod(ITestResult result)
 	{
+		
 		if(result.getStatus()==ITestResult.FAILURE)
 		{
 		eLog.log(LogStatus.FAIL, "The test has Failed");
@@ -89,19 +94,8 @@ public void launchBrowser()
 		{
 		eLog.log(LogStatus.SKIP, "The test has Skipped");
 		}		
-		report.endTest(eLog);		
+//	report.endTest(eLog);		
 }
-
-//@DataProvider(name="testData")
-//
-//public Object[][] textData() throws IOException
-//{
-//	Object[][] arrayData = null; 
-//	ReadExcelFile xlRead = new ReadExcelFile();
-//	arrayData = xlRead.getFormData("C:\\Users\\Srikanth\\git\\Programs\\CoreJavaLearn\\Programs\\src\\test\\java\\excelFiles\\TestData.xlsx","TextDisplay");
-//		
-//	return arrayData;	
-//}
 
 public static String timestamp()
 	{
