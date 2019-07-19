@@ -36,6 +36,8 @@ public String reportPath="C:\\Users\\Srikanth\\git\\Programs\\CoreJavaLearn\\Pro
 
 public String configFilePath="C:\\Users\\Srikanth\\git\\Programs\\CoreJavaLearn\\Programs\\src\\test\\java\\reportXML\\";
 
+public String xlPath="C:\\Users\\Srikanth\\git\\Programs\\CoreJavaLearn\\Programs\\src\\test\\java\\excelFiles\\TestData.xlsx";
+
 @BeforeSuite
 public void startSuite()
 {
@@ -64,16 +66,21 @@ public void launchBrowser()
 }
 
   @AfterTest
-  public void closeBrowser() {
-	  System.out.println("this is close test");
-	  
-	 // driver.close();
+  public void closeBrowser() 
+  {
+	  System.out.println("this is close test");	  
+	  driver.close();
   }
   
 @BeforeMethod
 	public void beforeTestMethod()
 	{
-		System.out.println("This is the before method");
+	
+	System.out.println("This is the before method");
+	
+	//driver.get("http://www.way2automation.com/demo.html");
+		
+		
 	}
 	
 @AfterMethod
@@ -94,7 +101,7 @@ public void launchBrowser()
 		{
 		eLog.log(LogStatus.SKIP, "The test has Skipped");
 		}		
-//	report.endTest(eLog);		
+		report.endTest(eLog);		
 }
 
 public static String timestamp()
